@@ -7,6 +7,7 @@ import {
   FaTimes,
   FaChevronDown,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -121,13 +122,13 @@ export default function Header() {
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             {/* Logo */}
-            <div className="flex items-center">
+            <Link to="/" className="flex items-center">
               <img
                 src="https://ptit.edu.vn/wp-content/uploads/2024/05/logo-ptit-1.svg"
                 alt="PTIT Logo"
                 className="h-12 w-auto object-contain hover:scale-105 transition-transform duration-200"
               />
-            </div>
+            </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-8">
