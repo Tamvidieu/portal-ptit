@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { User, Lock, Home, LogIn } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     if (!username || !password) {
@@ -19,10 +21,6 @@ export default function LoginPage() {
       setIsLoading(false);
       alert(`Đăng nhập thành công với username: ${username}`);
     }, 1000);
-  };
-
-  const handleBackToHome = () => {
-    alert("Quay về trang chủ");
   };
 
   return (
@@ -135,7 +133,7 @@ export default function LoginPage() {
 
             {/* Back to home button */}
             <button
-              onClick={handleBackToHome}
+              onClick={() => navigate("/")}
               className="w-full font-semibold py-3 px-6 rounded-xl border backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center space-x-2"
               style={{
                 backgroundColor: "rgba(255, 182, 182, 0.2)",

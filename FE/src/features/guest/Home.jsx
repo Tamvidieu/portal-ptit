@@ -4,6 +4,7 @@ import Footer from "../../components/guest/Footer";
 import HomeSlider from "../../ui/HomeSlider";
 import ScrollToTop from "../../components/guest/ScrollToTop";
 import NewsEventsSection from "../../ui/NewsEventsSection";
+import { useNavigate } from "react-router-dom";
 
 const myEvents = [
   {
@@ -44,6 +45,8 @@ const myEvents = [
 ];
 
 const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -66,7 +69,7 @@ const Home = () => {
         title="Tin tức mới nhất"
         subtitle="THÔNG BÁO QUAN TRỌNG"
         events={myEvents}
-        onViewMore={() => navigate("/news")}
+        onViewMore={() => navigate("/articles")}
       />
       <ScrollToTop />
       <Footer />
