@@ -1,6 +1,7 @@
 import React from "react";
 import { FaClock, FaArrowRight } from "react-icons/fa";
 import EventCard from "./EventCard";
+import { useNavigate } from "react-router-dom";
 
 const NewsEventsSection = ({
   title = "Sự kiện",
@@ -12,6 +13,8 @@ const NewsEventsSection = ({
   cardLayout = "vertical",
   className = "",
 }) => {
+  const navigator = useNavigate();
+
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const day = date.getDate().toString().padStart(2, "0");
@@ -65,12 +68,18 @@ const NewsEventsSection = ({
         {/* Events Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {events.map((event, index) => (
-            <EventCard
+            <div
               key={event.id || index}
-              event={event}
-              cardSize={cardSize}
-              layout={cardLayout}
-            />
+              onClick={() => navigator(`/articles/${event.id}`)}
+            >
+              <EventCard
+                key={event.id || index}
+                event={event}
+                cardSize={cardSize}
+                layout={cardLayout}
+                className="cursor-pointer"
+              />
+            </div>
           ))}
         </div>
 

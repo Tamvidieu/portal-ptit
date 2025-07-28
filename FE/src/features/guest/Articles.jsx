@@ -1,10 +1,12 @@
-import React, { Component } from "react";
+import React, { Component, use } from "react";
 import Header from "../../components/guest/Header";
 import Footer from "../../components/guest/Footer";
 import EnhancedBreadcrumb from "../../components/guest/EnhancedBreadcrumb";
 import Search from "../../components/guest/Search";
 import ListArticles from "../../ui/ListArticles";
 import { useState } from "react";
+import ScrollToTop from "../../components/guest/ScrollToTop";
+import { useNavigate } from "react-router-dom";
 
 const sampleEvents = [
   {
@@ -57,6 +59,7 @@ const sampleEvents = [
 function Articles() {
   const [layout, setLayout] = useState("grid");
   const [cardSize, setCardSize] = useState("default");
+  const navigatate = useNavigate();
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -64,14 +67,14 @@ function Articles() {
 
       {/* Main content */}
       <EnhancedBreadcrumb
-        backgroundImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAF3jvkhiHrC4W-Vu9J_0A1kvni4C5qZrj1w&s"
+        backgroundImage="https://ptit.edu.vn/wp-content/images/empty.png"
         title="Tin tức"
         breadcrumbItems={[{ label: "Tin tức", href: null }]}
         height="500px"
-        overlayOpacity={0.7}
+        overlayOpacity={0.5}
       />
 
-      <div className="w-6xl flex-grow mx-auto flex items-center justify-center bg-gray-100">
+      <div className="flex-grow mx-auto flex items-center justify-center bg-gray-100">
         <Search
           placeholder="Tìm kiếm tin tức, sự kiện..."
           sortOptions={[
@@ -124,11 +127,12 @@ function Articles() {
             layout={layout}
             cardSize={cardSize}
             title="Danh sách tin tức"
-            onEventClick={(event) => alert(`Clicked on: ${event.title}`)}
+            onEventClick={(event) => navigatate(`/articles/${event.id}`)}
           />
         </div>
       </div>
 
+      <ScrollToTop />
       <Footer />
     </div>
   );

@@ -134,7 +134,6 @@ const EventCard = ({
 
             {showReadMore && (
               <a
-                href={event.link || "#"}
                 className={`inline-flex items-center gap-2 text-red-600 font-medium ${config.descriptionSize} hover:text-red-700 transition-colors duration-200 group/link`}
               >
                 Xem chi tiết
@@ -202,7 +201,6 @@ const EventCard = ({
 
         {showReadMore && (
           <a
-            href={event.link || "#"}
             className={`inline-flex items-center gap-2 text-red-600 font-medium ${config.descriptionSize} hover:text-red-700 transition-colors duration-200 group/link`}
           >
             Xem chi tiết
