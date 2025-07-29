@@ -3,6 +3,8 @@ import LoginPage from "./features/auth/LoginPage";
 import Home from "./features/guest/Home";
 import Articles from "./features/guest/Articles";
 import ArticlesDetail from "./features/guest/ArticlesDetail";
+import AdminLayout from "./components/admin/AdminLayout";
+import Dashboard from "./features/admin/Dashboard";
 function App() {
   return (
     <Routes>
@@ -10,7 +12,13 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/articles" element={<Articles />} />
       <Route path="/articles/:id" element={<ArticlesDetail />} />
-      {/* Add more routes as needed */}
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route index element={<Dashboard />} />
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="users" element={<div>User Management</div>} />
+        <Route path="categories" element={<div>Categories Management</div>} />
+        <Route path="articles" element={<div>Articles Management</div>} />
+      </Route>
     </Routes>
   );
 }
