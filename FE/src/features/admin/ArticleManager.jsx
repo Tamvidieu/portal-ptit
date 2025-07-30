@@ -3,9 +3,9 @@ import TitleManager from "../../ui/admin/TitleManager";
 import ListBtnAction from "../../ui/admin/ListBtnAction";
 import Table from "../../ui/admin/Table";
 import Pagination from "../../ui/admin/Pagination";
-import Dialog from "../../components/Dialog";
-import TextEditor from "../../components/TextEditor";
+import Dialog from "../../ui/admin/Dialog";
 import { Edit, Eye, Plus, FileText, Tag, Save, User } from "lucide-react";
+import TextEditor from "../../ui/admin/TextEditor";
 
 function ArticleManager() {
   const [articles] = useState([
@@ -425,7 +425,7 @@ function ArticleManager() {
                       console.log("Updated content:", content)
                     }
                     disabled={isViewMode}
-                    height={250}
+                    height={500}
                   />
                 </div>
               </div>

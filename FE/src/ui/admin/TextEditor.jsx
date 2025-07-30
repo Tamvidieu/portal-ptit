@@ -37,6 +37,7 @@ function TextEditor({ value, onChange, disabled = false, height = 500 }) {
           "removeformat | image | help",
         content_style:
           "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+        // image_upload_handler: function_upload_cloud  nếu muốn upload ảnh lên cloud và chỉ lưu url trong content
       }}
     />
   );
