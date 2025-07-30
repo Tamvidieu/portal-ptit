@@ -5,6 +5,7 @@ import Articles from "./features/guest/Articles";
 import ArticlesDetail from "./features/guest/ArticlesDetail";
 import AdminLayout from "./components/admin/AdminLayout";
 import Dashboard from "./features/admin/Dashboard";
+import ArticleManager from "./features/admin/ArticleManager";
 function App() {
   return (
     <Routes>
@@ -17,7 +18,7 @@ function App() {
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="users" element={<div>User Management</div>} />
         <Route path="categories" element={<div>Categories Management</div>} />
-        <Route path="articles" element={<div>Articles Management</div>} />
+        <Route path="articles" element={<ArticleManager />} />
       </Route>
     </Routes>
   );
