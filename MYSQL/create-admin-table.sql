@@ -31,16 +31,23 @@ CREATE TABLE articles (
     author_id INT, -- ID của tác giả
     published_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     last_updated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    status ENUM('draft', 'published', 'archived') DEFAULT 'draft', -- Trạng thái bài viết
-    FOREIGN KEY (author_id) REFERENCES admin(id) ON DELETE SET NULL
+    status ENUM('draft', 'published', 'archived') DEFAULT 'draft' -- Trạng thái bài viết
 );
 
-CREATE TABLE article_categories (
-    article_id INT NOT NULL,
-    category_id INT NOT NULL,
-    PRIMARY KEY (article_id, category_id), -- Khóa chính kép, đảm bảo mỗi cặp là duy nhất
-    FOREIGN KEY (article_id) REFERENCES articles(id) ON DELETE CASCADE, -- Xóa liên kết nếu bài viết bị xóa
-    FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE -- Xóa liên kết nếu danh mục bị xóa
+CREATE TABLE media (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    file_name VARCHAR(255) NOT NULL,
+    file_url VARCHAR(255) NOT NULL,
+    file_type VARCHAR(50),
+    media_type ENUM('thumbnail', 'content', 'gallery') DEFAULT 'content',
+    file_size BIGINT,
+    alt_text VARCHAR(255),
+    article_id INT,
+    position INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (article_id) REFERENCES articles(id) ON DELETE CASCADE,
+    INDEX idx_media_article (article_id),
+    INDEX idx_media_type (media_type)
 );
 
 
