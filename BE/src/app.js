@@ -12,9 +12,13 @@ app.use(express.json());
 
 const authRoutes = require('./routes/authRoutes');
 const articleRoutes = require('./routes/articleRoutes');
+const categoryRoutes = require('./routes/categoryRoutes'); // Import category routes
+const bannerRoutes = require('./routes/bannerRoutes'); 
 
 app.use('/api/auth', authRoutes);
 app.use('/api/articles', articleRoutes);
+app.use('/api/categories', categoryRoutes); // Sử dụng category routes
+app.use('/api/banners', bannerRoutes); 
 
 app.get('/', (req, res) => {
     res.send('Backend API is running!');

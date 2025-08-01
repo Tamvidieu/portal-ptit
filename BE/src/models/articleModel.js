@@ -35,6 +35,12 @@ const Article = {
              GROUP BY a.id
              ORDER BY a.published_date DESC`
         );
+
+        rows.forEach(row => {
+            console.log('typeof category_details:', typeof row.category_details);
+            console.log('value:', row.category_details);
+        });
+
         return rows.map(row => ({
             ...row,
             // Đã sửa: loại bỏ JSON.parse()
